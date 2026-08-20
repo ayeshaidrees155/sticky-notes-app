@@ -4,6 +4,12 @@ A clean, interactive, and responsive Sticky Notes web application built with Van
 
 ---
 
+## Live Demo
+
+Check out the live application here: [https://ayesha-sticky-notes-app.vercel.app](https://ayesha-sticky-notes-app.vercel.app)
+
+---
+
 ## Features
 
 - **Interactive Note Management:** Create and delete sticky notes dynamically.
