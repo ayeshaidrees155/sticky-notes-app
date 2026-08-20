@@ -1,0 +1,351 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sticky Note App</title>
+    <link href="https://fonts.googleapis.com/css2?family=KoHo:wght@200;300;400;500;600;700&display=swap"
+        rel="stylesheet">
+
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;500;600;700&display=swap"
+        rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+
+    <link href="https://fonts.googleapis.com/css2?family=KoHo:wght@200;300;400;500;600;700&display=swap"
+        rel="stylesheet">
+
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;500;600;700&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
+    <link rel="stylesheet" href="index.css">
+
+
+</head>
+
+<body>
+    <div class="navcontainer">
+
+        <h1 class="heading">Sticky Notes App</h1>
+        <ul class="navul">
+            <li class="navli">Home</li>
+            <li class="navli">About</li>
+            <li class="navli">Services</li>
+            <li class="navli">Portofolio</li>
+            <li class="navli">Contact us</li>
+        </ul>
+
+
+
+    </div>
+    <div class="inputcontainer">
+        <input type="text" id="stickyinput" placeholder="Add your notes">
+        <button id="btnadd" class="btnAdd">Add</button>
+    </div>
+
+    <div id="stickycontainer">
+
+    </div>
+                 <!-- changes need to be done with obj creation -->
+</body>
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        const input = document.getElementById("stickyinput");
+        const btnadd = document.getElementById("btnadd");
+        const stickydiv = document.getElementById("stickycontainer");
+        console.log("get all");
+        let selectedindex = null;
+        loadnotes();
+
+        setInterval(displayTime, 1000);
+
+        //searchvelue fun
+        input.addEventListener("keyup", function (e) {
+            // console.log(e.target.value);
+
+            const searchValue = e.target.value;
+            const notes = JSON.parse(localStorage.getItem("notes")) || [];
+            // const newnotes = notes.filter(item => item.includes(searchValue));...............................
+            const newnotes = notes.filter(item => item.text.includes(searchValue));
+            loadnote(newnotes);
+        })
+
+
+
+        btnadd.addEventListener("click", function () {
+            console.log("addbtn clicked");
+
+            const notes = JSON.parse(localStorage.getItem("notes")) || [];
+
+            const tasktext = input.value.trim();
+            if (tasktext === '') {
+                alert("Enter Note!")
+                return;
+            }
+
+            // matched prevention
+            let matchednote = notes.find((item) => {
+                // if (item == tasktext) {............................................
+                if (item.text == tasktext) {
+                    return true;
+                }
+
+            })
+            if (matchednote) {
+                alert("Your current note  is already exits!");
+                return;
+            }
+           
+            
+            saveNotes(tasktext);
+            console.log("saved");
+
+            // createstickyElement(tasktext);......................................
+
+              const updatednotes = JSON.parse(localStorage.getItem("notes")) || [];
+            const newIndex = updatednotes.length - 1;
+            const newNoteObj = updatednotes[newIndex];
+
+
+            createstickyElement(newNoteObj, newIndex);
+            input.value = '';
+
+
+        })
+
+        //function createstickyElement(text, index,)..............................
+        function createstickyElement(noteObj, index,) {
+
+            const box = document.createElement("div");
+            box.className = "box";
+            stickydiv.appendChild(box);
+            const span = document.createElement("span");
+            span.className = "span";
+            stickydiv.appendChild(span);
+
+            const blackiconsdiv = document.createElement("div")
+            blackiconsdiv.className = "blackicons";
+            box.appendChild(blackiconsdiv);
+
+            const editicon = document.createElement('i');
+            editicon.classList.add('fa-regular', 'fa-pen-to-square')
+            blackiconsdiv.appendChild(editicon);
+
+            editicon.addEventListener("click", function () {
+                console.log("editbtn clicked");
+                const subinput = document.createElement("input");
+                subinput.className = "subinput";
+                // subinput.value = text;...................................................................
+                subinput.value = noteObj.text;
+                blackiconsdiv.appendChild(subinput);
+
+                const btnupdate = document.createElement("button");
+                btnupdate.className = "btnupdate";
+                blackiconsdiv.appendChild(btnupdate);
+                btnupdate.innerText = "Update";
+
+                // editstickyNotes();
+                console.log("editiconclicked");
+                selectedindex = index;
+                let editedtext = subinput.value;
+                subinput.focus();
+
+                btnupdate.addEventListener("click", function () {
+                    console.log("updatebtn clicked");
+
+                    let updatedValue = subinput.value.trim();
+                    if (updatedValue === '') {
+                        alert("Enter Note!");
+                        return;
+                    }
+
+
+
+                    if (selectedindex !== null) {
+                        let updatedValue = subinput.value;
+                        const notes = JSON.parse(localStorage.getItem("notes")) || [];
+                        // notes[selectedindex] = updatedValue;..................................
+                        notes[selectedindex].text = updatedValue;
+                        localStorage.setItem("notes", JSON.stringify(notes));
+                        loadnotes();
+
+
+                    }
+
+                })
+
+
+
+
+            })
+
+            const delicon = document.createElement('i');
+            delicon.classList.add('fa-solid', 'fa-trash')
+            blackiconsdiv.appendChild(delicon);
+
+            delicon.addEventListener("click", function () {
+
+                console.log("delicon clicked");
+                delstickyNotes(index);
+
+
+            })
+
+            // function editstickyNotes() {
+            //     console.log("editiconclicked");
+            //     selectedindex = index;
+            //     let editedtext = subinput.value;
+
+
+            // }
+
+
+            function delstickyNotes(index) {
+
+                const notes = JSON.parse(localStorage.getItem("notes")) || [];
+                const notestodel = notes[index];
+                // console.log(notes, index);
+                notes.splice(index, 1);
+                console.log(notes);
+                localStorage.setItem("notes", JSON.stringify(notes));
+                loadnotes();
+
+
+
+            }
+
+
+            const li = document.createElement("div");
+            li.className = "stickynotes";
+            // li.innerText = text;
+            box.appendChild(li);
+            console.log("yesss");
+
+
+
+            const timediv = document.createElement("div");
+            timediv.className = "time";
+            // timediv.innerText = displayTime();//it will not chnge sec's
+            li.appendChild(timediv);
+            console.log("time");
+            //to chnge my seconds accrdingly............................................................................
+            // setInterval(function () {
+            //     timediv.innerText = displayTime();
+            // }, 1000)
+            timediv.innerText = noteObj.Time;
+
+            const stickyTagdiv = document.createElement("div");
+            stickyTagdiv.className = "stickytag";
+            li.appendChild(stickyTagdiv);
+            stickyTagdiv.innerText = noteObj.Title;
+            // stickyTagdiv.innerText = "Sticky Notes";.....................................................................
+
+            const inputlist = document.createElement("li");
+            inputlist.className = "inputlist";
+            // inputlist.innerText = text;.............................................................
+            inputlist.innerText = noteObj.text;
+            li.appendChild(inputlist);
+
+
+            const datediv = document.createElement("div");
+            datediv.className = "date";
+            li.appendChild(datediv);
+            // datediv.innerText = displayDate();.................................................................
+            datediv.innerText = noteObj.Date;
+        }
+        function displayTime() {
+
+            let time = new Date();
+            let hrs = time.getHours();
+            let min = time.getMinutes();
+            let sec = time.getSeconds();
+
+            if (hrs === 0) {
+                hrs === 12;
+
+            }
+            if (hrs < 10) {
+                hrs = "0" + hrs;
+            }
+            if (min < 10) {
+                min = "0" + min;
+            }
+            if (sec < 10) {
+                sec = "0" + sec;
+            }
+
+
+            return `${hrs}:${min}:${sec}`;
+
+
+        }
+        function displayDate() {
+            let day = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
+            let date = new Date();
+            let daynum = date.getDay();
+            let dayname = day[daynum];
+
+
+
+            let month = [
+                "January", "February", "March", "April",
+                "May", "June", "July", "August",
+                "September", "October", "November", "December"
+            ];
+            let monthnum = date.getMonth();
+            let monthname = month[monthnum];
+            let year = date.getYear();
+
+            return `${dayname},${daynum} ${monthname},${year}`;
+
+        }
+
+        function saveNotes(task) {
+            const notes = JSON.parse(localStorage.getItem("notes")) || [];
+            // creating obj here.................................................................
+            const noteObj = {
+                text: task,
+                Time: displayTime(),
+                Date: displayDate(),
+                Title: "Sticky Notes"
+            }
+            // notes.push(notes);............................................
+            notes.push(noteObj);
+            localStorage.setItem("notes", JSON.stringify(notes))
+        }
+
+        function loadnotes() {
+            stickydiv.innerHTML = '';
+            const notes = JSON.parse(localStorage.getItem("notes")) || [];
+            console.log(notes);
+            // to sotre data in objform..........................................................
+            // notes.map(function (task, index) {
+            //     createstickyElement(task, index);
+            // })
+            notes.map(function (note, index) {
+                createstickyElement(note, index);
+            })
+
+
+        }
+
+        //making other bcz here to give note dynamically
+        function loadnote(notes) {
+            stickydiv.innerHTML = '';
+            // const notes = JSON.parse(localStorage.getItem("notes")) || [];
+            console.log(notes);
+
+            notes.map(function (note, index) {
+                createstickyElement(note, index);
+            })
+            //note single obj
+            //notes full array
+            //index there num
+
+        }
+
+
+    })
+</script>
+
+</html>

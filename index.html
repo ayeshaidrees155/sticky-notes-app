@@ -1,0 +1,57 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>StickyNotes App</title>
+    <link rel="icon" type="image/png" href="yellowBg.png" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Courgette&family=Dancing+Script:wght@400..700&family=Edu+NSW+ACT+Cursive:wght@400..700&family=Josefin+Sans:ital,wght@0,100..700;1,100..700&family=Meie+Script&family=Pacifico&family=Permanent+Marker&family=Playwrite+HU:wght@100..400&family=Satisfy&family=Sekuya&family=VT323&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css"
+    />
+    <link rel="stylesheet" href="style.css" />
+  </head>
+
+  <body>
+    <nav class="navcontainer">
+      <h1 class="heading">Sticky Notes App</h1>
+
+      <!-- Hamburger  Button -->
+      <button
+        class="menu-toggle"
+        id="menuToggle"
+        aria-label="Toggle navigation"
+      >
+        <span class="bar"></span>
+        <span class="bar"></span>
+        <span class="bar"></span>
+      </button>
+
+      <ul class="navul" id="navMenu">
+        <li class="navli">Home</li>
+        <li class="navli">About</li>
+        <li class="navli">Services</li>
+        <li class="navli">Portfolio</li>
+        <li class="navli">Contact us</li>
+      </ul>
+    </nav>
+    <div class="inputcontainer">
+      <div class="input-wrapper">
+        <input type="text" id="stickyinput" placeholder="Add your notes..." />
+        <button class="search-btn" aria-label="Search">
+          <i class="fa-solid fa-magnifying-glass" id="searchicon"></i>
+        </button>
+      </div>
+      <button id="btnadd" class="btnAdd">Add</button>
+    </div>
+
+    <div id="stickycontainer"></div>
+  </body>
+  <script src="index.js"></script>
+</html>
