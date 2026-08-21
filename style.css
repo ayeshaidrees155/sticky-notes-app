@@ -6,6 +6,7 @@
 
 html {
     font-family: 'KoHo', sans-serif;
+    touch-action: manipulation;
 }
 
 .stickynotes,
@@ -71,7 +72,6 @@ html {
     transition: all 0.3s ease;
 }
 
-
 @media screen and (max-width: 768px) {
     .menu-toggle {
         display: flex;
@@ -88,7 +88,6 @@ html {
         padding: 1.5rem 0;
         gap: 1.2rem;
         box-shadow: 0 8px 10px rgba(0, 0, 0, 0.1);
-
         opacity: 0;
         visibility: hidden;
         transform: translateY(-10px);
@@ -142,7 +141,6 @@ html {
     padding: 0 0.8rem;
     border: none;
     font-family: inherit;
-
     font-size: 16px;
     background: transparent;
     text-transform: capitalize;
@@ -157,7 +155,7 @@ html {
 }
 
 #searchicon {
-    color: "#c9c9c9"
+    color: "#c9c9c9";
 }
 
 .search-btn {
@@ -189,14 +187,12 @@ html {
     cursor: pointer;
     transition: background-color 0.2s ease, opacity 0.2s ease;
     white-space: nowrap;
-
 }
 
 .btnAdd:hover {
     opacity: 0.9;
     background: rgb(242, 244, 245);
 }
-
 
 @media screen and (max-width: 600px) {
     .inputcontainer {
@@ -233,14 +229,13 @@ html {
     display: flex;
     flex-direction: column;
     position: relative;
-    filter: drop-shadow(8px 14px 12px rgba(0, 0, 0, 0.32));
+    filter: drop-shadow(4px 8px 8px rgba(0, 0, 0, 0.2));
     transition: transform 0.3s ease, filter 0.3s ease;
 }
 
-
 .box:hover {
-    transform: scale(1.05);
-    filter: drop-shadow(12px 20px 18px rgba(0, 0, 0, 0.45));
+    transform: scale(1.02);
+    filter: drop-shadow(6px 12px 14px rgba(0, 0, 0, 0.25));
     z-index: 10;
 }
 
@@ -258,7 +253,6 @@ html {
     z-index: 2;
     transition: background-color 0.3s ease;
 }
-
 
 .box:hover>.blackicons {
     background-color: #000000;
@@ -291,7 +285,6 @@ html {
 .fa-trash:hover {
     opacity: 0.8;
 }
-
 
 .blackicons .subinput,
 .blackicons .btnupdate {
@@ -360,7 +353,6 @@ html {
     margin-top: 5px;
 }
 
-
 .stickytag {
     text-align: center !important;
     font-family: "Satisfy", cursive;
@@ -384,7 +376,6 @@ html {
     content: "-> ";
 }
 
-
 .date {
     font-family: "Satisfy", cursive;
     font-size: 1.05rem;
@@ -396,7 +387,6 @@ html {
     padding-bottom: 5px;
     text-align: right !important;
 }
-
 
 .search {
     background: white;
