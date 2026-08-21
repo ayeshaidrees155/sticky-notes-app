@@ -229,13 +229,13 @@ html {
     display: flex;
     flex-direction: column;
     position: relative;
-    filter: drop-shadow(4px 8px 8px rgba(0, 0, 0, 0.2));
-    transition: transform 0.3s ease, filter 0.3s ease;
+    box-shadow: 4px 8px 15px rgba(0, 0, 0, 0.15);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
 .box:hover {
     transform: scale(1.02);
-    filter: drop-shadow(6px 12px 14px rgba(0, 0, 0, 0.25));
+    box-shadow: 6px 12px 20px rgba(0, 0, 0, 0.22);
     z-index: 10;
 }
 
@@ -301,20 +301,20 @@ html {
 
 .box.editing .blackicons .subinput {
     display: block;
-    width: 140px !important;
-    height: 20px;
+    width: 130px !important;
+    height: 26px;
     padding: 0 6px;
     border: 1px solid #ccc;
     border-radius: 3px;
     font-family: 'KoHo', sans-serif;
-    font-size: 11px;
+    font-size: 16px;
     outline: none;
 }
 
 .box.editing .blackicons .btnupdate {
     display: inline-block;
-    height: 20px !important;
-    font-size: 10px;
+    height: 24px !important;
+    font-size: 11px;
     font-family: 'KoHo', sans-serif;
     background-color: #ffffff;
     color: #000000;
