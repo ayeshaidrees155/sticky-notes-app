@@ -25,6 +25,7 @@ html {
     justify-content: space-between;
     padding: 0 2rem;
     position: relative;
+    z-index: 1000;
 }
 
 .heading {
@@ -61,7 +62,7 @@ html {
     border: none;
     cursor: pointer;
     padding: 0;
-    z-index: 10;
+    z-index: 1001;
 }
 
 .menu-toggle .bar {
@@ -92,6 +93,7 @@ html {
         visibility: hidden;
         transform: translateY(-10px);
         transition: all 0.3s ease-in-out;
+        z-index: 1000;
     }
 
     .navul.active {
@@ -312,6 +314,11 @@ html {
     box-shadow: none !important;
 }
 
+.box.editing .blackicons .subinput:focus {
+    outline: none;
+    box-shadow: none !important;
+}
+
 .box.editing .blackicons .btnupdate {
     display: inline-block;
     height: 24px !important;
@@ -324,6 +331,8 @@ html {
     padding: 0 6px;
     cursor: pointer;
     font-weight: bold;
+    outline: none;
+    box-shadow: none !important;
 }
 
 .stickynotes {
