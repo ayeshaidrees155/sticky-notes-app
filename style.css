@@ -229,13 +229,13 @@ html {
     display: flex;
     flex-direction: column;
     position: relative;
-    box-shadow: 4px 8px 15px rgba(0, 0, 0, 0.15);
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    filter: drop-shadow(3px 5px 10px rgba(0, 0, 0, 0.15));
+    transition: transform 0.3s ease, filter 0.3s ease;
 }
 
 .box:hover {
     transform: scale(1.02);
-    box-shadow: 6px 12px 20px rgba(0, 0, 0, 0.22);
+    filter: drop-shadow(5px 8px 14px rgba(0, 0, 0, 0.22));
     z-index: 10;
 }
 
