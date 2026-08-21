@@ -24,6 +24,7 @@ html {
     justify-content: space-between;
     padding: 0 2rem;
     position: relative;
+    z-index: 9999;
 }
 
 .heading {
@@ -60,7 +61,7 @@ html {
     border: none;
     cursor: pointer;
     padding: 0;
-    z-index: 10;
+    z-index: 10000;
 }
 
 .menu-toggle .bar {
@@ -93,6 +94,7 @@ html {
         visibility: hidden;
         transform: translateY(-10px);
         transition: all 0.3s ease-in-out;
+        z-index: 9999;
     }
 
     .navul.active {
@@ -142,7 +144,6 @@ html {
     padding: 0 0.8rem;
     border: none;
     font-family: inherit;
-
     font-size: 16px;
     background: transparent;
     text-transform: capitalize;
@@ -189,7 +190,6 @@ html {
     cursor: pointer;
     transition: background-color 0.2s ease, opacity 0.2s ease;
     white-space: nowrap;
-
 }
 
 .btnAdd:hover {
@@ -233,14 +233,20 @@ html {
     display: flex;
     flex-direction: column;
     position: relative;
-    filter: drop-shadow(8px 14px 12px rgba(0, 0, 0, 0.32));
+    filter: drop-shadow(3px 5px 10px rgba(0, 0, 0, 0.15));
     transition: transform 0.3s ease, filter 0.3s ease;
 }
 
 
 .box:hover {
-    transform: scale(1.05);
-    filter: drop-shadow(12px 20px 18px rgba(0, 0, 0, 0.45));
+    transform: scale(1.02);
+    filter: drop-shadow(5px 8px 14px rgba(0, 0, 0, 0.22));
+    z-index: 10;
+}
+
+.box.editing {
+    transform: none;
+    filter: drop-shadow(3px 5px 10px rgba(0, 0, 0, 0.15));
     z-index: 10;
 }
 
@@ -260,7 +266,8 @@ html {
 }
 
 
-.box:hover>.blackicons {
+.box:hover>.blackicons,
+.box.editing>.blackicons {
     background-color: #000000;
 }
 
@@ -316,6 +323,7 @@ html {
     font-family: 'KoHo', sans-serif;
     font-size: 16px;
     outline: none;
+    box-shadow: none !important;
 }
 
 .box.editing .blackicons .btnupdate {
@@ -330,6 +338,8 @@ html {
     padding: 0 6px;
     cursor: pointer;
     font-weight: bold;
+    outline: none;
+    box-shadow: none !important;
 }
 
 .stickynotes {
