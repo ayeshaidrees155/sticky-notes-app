@@ -256,7 +256,8 @@ html {
     transition: background-color 0.3s ease;
 }
 
-.box:hover>.blackicons {
+.box:hover>.blackicons,
+.box.editing>.blackicons {
     background-color: #000000;
 }
 
