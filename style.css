@@ -89,7 +89,6 @@ html {
         gap: 1.2rem;
         box-shadow: 0 8px 10px rgba(0, 0, 0, 0.1);
 
-
         opacity: 0;
         visibility: hidden;
         transform: translateY(-10px);
@@ -143,12 +142,10 @@ html {
     padding: 0 0.8rem;
     border: none;
     font-family: inherit;
-    font-size: 1rem;
+
+    font-size: 16px;
     background: transparent;
-
-
     text-transform: capitalize;
-
 }
 
 .input-wrapper:focus-within {
@@ -160,7 +157,7 @@ html {
 }
 
 #searchicon {
-    color: "#c9c9c9 "
+    color: "#c9c9c9"
 }
 
 .search-btn {
@@ -191,6 +188,8 @@ html {
     font-weight: bold;
     cursor: pointer;
     transition: background-color 0.2s ease, opacity 0.2s ease;
+    white-space: nowrap;
+
 }
 
 .btnAdd:hover {
@@ -205,11 +204,12 @@ html {
     }
 
     .input-wrapper {
-        width: 70%;
+        width: 65%;
     }
 
     .btnAdd {
-        padding: 0 1rem;
+        padding: 0 0.8rem;
+        font-size: 0.9rem;
     }
 }
 
@@ -224,6 +224,7 @@ html {
 }
 
 .box {
+    cursor: pointer;
     width: 16vw;
     min-width: 270px;
     height: 55vh;
@@ -299,12 +300,10 @@ html {
 
 .box.editing .blackicons {
     justify-content: space-between;
-
 }
 
 .box.editing .blackicons .fa-pen-to-square {
     display: none !important;
-
 }
 
 .box.editing .blackicons .subinput {
@@ -407,7 +406,6 @@ html {
 
 .search i {
     padding: 3px;
-
 }
 
 @media screen and (max-width: 900px) {
