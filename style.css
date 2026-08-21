@@ -6,7 +6,6 @@
 
 html {
     font-family: 'KoHo', sans-serif;
-    touch-action: manipulation;
 }
 
 .stickynotes,
@@ -25,7 +24,6 @@ html {
     justify-content: space-between;
     padding: 0 2rem;
     position: relative;
-    z-index: 1000;
 }
 
 .heading {
@@ -62,7 +60,7 @@ html {
     border: none;
     cursor: pointer;
     padding: 0;
-    z-index: 1001;
+    z-index: 10;
 }
 
 .menu-toggle .bar {
@@ -72,6 +70,7 @@ html {
     border-radius: 2px;
     transition: all 0.3s ease;
 }
+
 
 @media screen and (max-width: 768px) {
     .menu-toggle {
@@ -89,11 +88,11 @@ html {
         padding: 1.5rem 0;
         gap: 1.2rem;
         box-shadow: 0 8px 10px rgba(0, 0, 0, 0.1);
+
         opacity: 0;
         visibility: hidden;
         transform: translateY(-10px);
         transition: all 0.3s ease-in-out;
-        z-index: 1000;
     }
 
     .navul.active {
@@ -143,6 +142,7 @@ html {
     padding: 0 0.8rem;
     border: none;
     font-family: inherit;
+
     font-size: 16px;
     background: transparent;
     text-transform: capitalize;
@@ -157,7 +157,7 @@ html {
 }
 
 #searchicon {
-    color: "#c9c9c9";
+    color: "#c9c9c9"
 }
 
 .search-btn {
@@ -189,12 +189,14 @@ html {
     cursor: pointer;
     transition: background-color 0.2s ease, opacity 0.2s ease;
     white-space: nowrap;
+
 }
 
 .btnAdd:hover {
     opacity: 0.9;
     background: rgb(242, 244, 245);
 }
+
 
 @media screen and (max-width: 600px) {
     .inputcontainer {
@@ -231,13 +233,14 @@ html {
     display: flex;
     flex-direction: column;
     position: relative;
-    filter: drop-shadow(3px 5px 10px rgba(0, 0, 0, 0.15));
+    filter: drop-shadow(8px 14px 12px rgba(0, 0, 0, 0.32));
     transition: transform 0.3s ease, filter 0.3s ease;
 }
 
+
 .box:hover {
-    transform: scale(1.02);
-    filter: drop-shadow(5px 8px 14px rgba(0, 0, 0, 0.22));
+    transform: scale(1.05);
+    filter: drop-shadow(12px 20px 18px rgba(0, 0, 0, 0.45));
     z-index: 10;
 }
 
@@ -256,8 +259,8 @@ html {
     transition: background-color 0.3s ease;
 }
 
-.box:hover>.blackicons,
-.box.editing>.blackicons {
+
+.box:hover>.blackicons {
     background-color: #000000;
 }
 
@@ -289,6 +292,7 @@ html {
     opacity: 0.8;
 }
 
+
 .blackicons .subinput,
 .blackicons .btnupdate {
     display: none;
@@ -304,26 +308,20 @@ html {
 
 .box.editing .blackicons .subinput {
     display: block;
-    width: 130px !important;
-    height: 26px;
+    width: 140px !important;
+    height: 20px;
     padding: 0 6px;
     border: 1px solid #ccc;
     border-radius: 3px;
     font-family: 'KoHo', sans-serif;
     font-size: 16px;
     outline: none;
-    box-shadow: none !important;
-}
-
-.box.editing .blackicons .subinput:focus {
-    outline: none;
-    box-shadow: none !important;
 }
 
 .box.editing .blackicons .btnupdate {
     display: inline-block;
-    height: 24px !important;
-    font-size: 11px;
+    height: 20px !important;
+    font-size: 10px;
     font-family: 'KoHo', sans-serif;
     background-color: #ffffff;
     color: #000000;
@@ -332,8 +330,6 @@ html {
     padding: 0 6px;
     cursor: pointer;
     font-weight: bold;
-    outline: none;
-    box-shadow: none !important;
 }
 
 .stickynotes {
@@ -364,6 +360,7 @@ html {
     margin-top: 5px;
 }
 
+
 .stickytag {
     text-align: center !important;
     font-family: "Satisfy", cursive;
@@ -387,6 +384,7 @@ html {
     content: "-> ";
 }
 
+
 .date {
     font-family: "Satisfy", cursive;
     font-size: 1.05rem;
@@ -398,6 +396,7 @@ html {
     padding-bottom: 5px;
     text-align: right !important;
 }
+
 
 .search {
     background: white;
